@@ -5,7 +5,7 @@ english_vocab = set(w.lower() for w in nltk.corpus.words.words())
 
 class PodcastCleaner(object):
     def __init__(self):
-        self.df = pd.read_csv("/Users/zephryin/Desktop/Podcast_additional_info.csv")
+        self.df = pd.read_csv("../data/Podcast_additional_info.csv")
         self.cleaned_df = None
     
     def _remove_empty_strings_int(self):
