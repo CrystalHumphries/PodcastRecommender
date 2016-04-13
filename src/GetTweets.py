@@ -6,7 +6,6 @@ Created on Sun Mar 27 08:18:51 2016
 """
 
 from twython import Twython
-import datetime
 import json
 import re
 
@@ -14,13 +13,11 @@ class Collect_Tweets_by_Hashtag(object):
     
     def __init__(self, searchterm):
         self.searchterm = searchterm
-        timestamp       = str(datetime.datetime.now()).split()[0].replace('-','')
-        file_trunk      = searchterm.strip('#')
-        self.filename   = '_'.join([ timestamp, file_trunk, 'TwitterOutput.csv'])
+        self.filename   = '.'.join(['TwitterOutput',searchterm,'csv'])
         self.max_id     = None
         
     def _call_Twitter_api(self):
-        twitter_api_info    = json.load(open('/root/.api_keys/Twitter_api.json'))
+        twitter_api_info    = json.load(open('/Users/zephryin/.api/Twitter_API.json'))
         CONSUMER_KEY        = twitter_api_info['API Key']
         CONSUMER_SECRET     = twitter_api_info['API Secret']
         self.twitterAPI     = Twython(CONSUMER_KEY, CONSUMER_SECRET)
