@@ -22,7 +22,7 @@ class Podcast_Features(PodcastCleaner):
         else:
             self.vec_model = text_vec_model
 
-    def get_NMF_topics(self, model, text):
+    def get_NMF_topics(self, model, text, print_cat=False):
         tfidf_feature_names = self.vec_model.get_feature_names()
         topics = self.get_corresponding_topics(self.nmf, 
                                                tfidf_feature_names, 20)
@@ -33,9 +33,11 @@ class Podcast_Features(PodcastCleaner):
             n = np.argsort(row)[::-1][0]
             array = topics.values[n]
             ls.append(array)
+        
+        if print_cat is True:
+            print("\nTopics in NMF model:")
+            self.print_top_words(self.nmf, tfidf_feature_names, 20)
 
-        print("\nTopics in NMF model:")
-        self.print_top_words(self.nmf, tfidf_feature_names, 20)
         return pd.DataFrame(pd.Series(ls))
 
     def print_top_words(self, model, feature_names, n_top_words):
@@ -53,8 +55,8 @@ class Podcast_Features(PodcastCleaner):
                                          ngram_range=(1, 3), min_df=3,
                                          stop_words=my_stop_words)
 
-    def call_nmf(self, text):
-        self.nmf = NMF(n_components=20, random_state=1, alpha=.1,
+    def call_nmf(self, text, n_components=20):
+        self.nmf = NMF(n_components=n_components, random_state=1, alpha=.1,
                        l1_ratio=.5).fit(text)
 
     def vectorize_text(self, col):
@@ -72,3 +74,10 @@ class Podcast_Features(PodcastCleaner):
                                  topic.argsort()[:- n_top_words - 1:-1]])
             ls.append(features)
         return pd.DataFrame(pd.Series(ls))
+     
+    def get_new_column_of_text(self, col, n_components=20, print_cat=False):
+        self.vec_model = None
+        text = self.vectorize_text(col)
+        self.call_nmf(text, 30)
+        new_col = self.get_NMF_topics(self.nmf, text, print_cat)
+        return new_col
