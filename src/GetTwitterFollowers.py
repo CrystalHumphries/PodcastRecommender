@@ -5,9 +5,9 @@ Created on Sun Apr 17 15:44:54 2016
 @author: Crystal Humphries
 
 
-GetTwitterFollowers goes through a list of twitter handles 
+GetTwitterFollowers.py goes through a list of twitter handles
 (supplied by "../data/twitter_handles_ids_4Mongo.pkl)
-and retrieves 200 followers from each handle. 
+and retrieves 200 followers from each handle.
 The retrieved handles are placed into a mongo database.
 """
 import time
