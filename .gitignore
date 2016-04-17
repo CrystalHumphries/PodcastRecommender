@@ -1,0 +1,10 @@
+###data_files
+*.csv
+*.json
+*.pkl
+
+##sframe from graphlab
+*.gl
+
+## other
+*.~
