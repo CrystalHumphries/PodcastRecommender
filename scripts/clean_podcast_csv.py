@@ -44,7 +44,7 @@ class PodcastCleaner(object):
         
         Parameters
         ----------
-            input : float {'percentage'} text{'column name'}'''
+            input : float {"percentage"} text{'column name'}'''
         
         self.percentage = 0.9
         if percentage != None:
