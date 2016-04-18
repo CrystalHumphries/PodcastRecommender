@@ -2,7 +2,6 @@
 *.csv
 *.json
 *.pkl
-*.mp3
 
 ##sframe from graphlab
 *.gl

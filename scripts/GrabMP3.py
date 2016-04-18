@@ -56,6 +56,10 @@ if __name__ == "__main__":
             list_rss = soup.findAll('media:content')
             bucket = connect_bucket('podcastrecommenderbucket')
             folder = folder_name(df.Title[i])
+
+            if len(list_rss) > 5:
+                list_rss = list_rss[0:5]
+              
             for rss in list_rss:
                 mp3 = rss.get('url')
                 cmd = 'wget ' + mp3
