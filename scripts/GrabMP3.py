@@ -87,18 +87,21 @@ class Grab_MP3S(object):
                 title = self.df.Title.values[i]
                 folder = self._folder_name(title)
  
-                if len(list_rss) > 5:
-                    list_rss = list_rss[0:5]
-               
+               n = 0
                 for rss in list_rss:
+                    if rss.split('.')[-1] != 'mp3':
+                        continue
                     mp3 = rss.get('url')
                     cmd = 'wget ' + mp3
                     os.system(cmd)
                     filename = os.path.basename(mp3)
                     if os.path.exists(filename):
+                        n += 1
                         self._write_to_s3(filename, folder, self.bucket)
                     else:
                         continue
+                    if n == 5:
+                        break
                 cmd_rm = 'rm ' + ' '.join(list_rss)
                 os.system(cmd_rm)
             except:
