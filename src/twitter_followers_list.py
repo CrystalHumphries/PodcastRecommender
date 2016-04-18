@@ -49,7 +49,7 @@ class get_twitter_followers(object):
             try:
                 if 'TwitterFollowers' in pod and pod['TwitterFollowers']:
                     if pod['TwitterFollowers'][0] != 'None':
-                        practice.append(pod)
+                        self.list_of_followers.append(pod)
                         n += 1
             except:
                 pass
