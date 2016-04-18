@@ -56,7 +56,7 @@ class Grab_MP3S(object):
         file_object.set_contents_from_filename(filename, policy='public-read')
 
     def _trim_names(self):
-        df = pd.read_csv("../data/Podcast_additional_info.csv")
+        df = pd.read_csv("../data/Podcast_additional_info.csv", low_memory=False)
         tweets = imp.load_source('get_twitter_followers', loc)
         tweets = tweets.get_twitter_followers()
         tweets.get_overlapping_users()
@@ -88,6 +88,7 @@ class Grab_MP3S(object):
                 folder = self._folder_name(title)
 
                 n = 0
+                files=[]
                 for rss in list_rss:
                     if rss.split('.')[-1] != 'mp3':
                         continue
@@ -98,11 +99,12 @@ class Grab_MP3S(object):
                     if os.path.exists(filename):
                         n += 1
                         self._write_to_s3(filename, folder, self.bucket)
+                        files.append(filename)
                     else:
                         continue
                     if n == 5:
                         break
-                cmd_rm = 'rm ' + ' '.join(list_rss)
+                cmd_rm = 'rm -rf' + ' '.join(files)
                 os.system(cmd_rm)
             except:
                 self.broken_links.append(title)
