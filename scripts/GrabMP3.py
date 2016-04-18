@@ -77,13 +77,15 @@ class Grab_MP3S(object):
             self.get_start_stop(quintile)
         self._trim_names()
         for i, rl in enumerate(self.df.NormalizedUrl):
+            title = self.df.Title.values[i]
             url = 'https://' + rl
             try:
                 response = requests.get(url)
                 soup = BeautifulSoup(response.content)
                 list_rss = soup.findAll('media:content')
                 self.connect_bucket('podcastrecommenderbucket')
-                folder = self._folder_name(self.df.Title[i])
+                title = self.df.Title.values[i]
+                folder = self._folder_name(title)
  
                 if len(list_rss) > 5:
                     list_rss = list_rss[0:5]
@@ -100,4 +102,4 @@ class Grab_MP3S(object):
                 cmd_rm = 'rm ' + ' '.join(list_rss)
                 os.system(cmd_rm)
             except:
-                self.broken_links.append(self.df.Title[i])
+                self.broken_links.append(title)
