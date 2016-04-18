@@ -58,6 +58,7 @@ class Grab_MP3S(object):
     def _trim_names(self):
         df = pd.read_csv("../data/Podcast_additional_info.csv")
         tweets = imp.load_source('get_twitter_followers', loc)
+        tweets = tweets.get_twitter_followers()
         tweets.get_overlapping_users()
         df_followers = tweets.trim_users()
         titles = df_followers.index
