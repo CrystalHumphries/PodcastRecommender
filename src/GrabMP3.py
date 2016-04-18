@@ -94,16 +94,15 @@ class Grab_MP3S(object):
                     cmd = 'wget ' + mp3
                     os.system(cmd)
                     filename = os.path.basename(mp3)
-                    if filename.split('.')[-1] != 'mp3':
-                        continue
-                    if os.path.exists(filename):
-                        n += 1
-                        self._write_to_s3(filename, folder, self.bucket)
-                        files.append(filename)
-                    else:
-                        continue
-                    if n == 5:
-                        break
+                    if filename.split('.')[-1] == 'mp3':
+                        if os.path.exists(filename):
+                            n += 1
+                            self._write_to_s3(filename, folder, self.bucket)
+                            files.append(filename)
+                        else:
+                            continue
+                        if n == 5:
+                            break
                 cmd_rm = 'rm -rf' + ' '.join(files)
                 os.system(cmd_rm)
             except:
