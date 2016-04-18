@@ -16,8 +16,11 @@ import boto
 import re
 import os
 import json
-from twitter_followers_list import get_twitter_followers
+import imp
 import numpy as np
+
+path_to_dir = '/home/ubuntu/PodcastRecommender/'
+loc = os.path.join(path_to_dir, "src/twitter_followers_list.py")
 
 '''Obtain list of rss websites'''
 
@@ -54,7 +57,7 @@ class Grab_MP3S(object):
 
     def _trim_names(self):
         df = pd.read_csv("../data/Podcast_additional_info.csv")
-        tweets = get_twitter_followers()
+        tweets = imp.load_source('get_twitter_followers', loc)
         tweets.get_overlapping_users()
         df_followers = tweets.trim_users()
         titles = df_followers.index
