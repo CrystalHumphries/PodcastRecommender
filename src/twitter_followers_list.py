@@ -32,12 +32,12 @@ class get_twitter_followers(object):
         return db['PodcastTwitter_handles']
         
     def create_sparse_matrix(self, list_of_followers):
-        list_of_strings = []
-        list_of_titles = []
+        self.strings = []
+        self.titles = []
         for ls in list_of_followers:
             x = ' '.join([str(x) for x in ls['TwitterFollowers']])
-            list_of_strings.append(x)
-            list_of_titles.append(ls['Title'])
+            self.strings.append(x)
+            self.titles.append(ls['Title'])
         return list_of_strings, list_of_titles
 
     def list_followers(self):
