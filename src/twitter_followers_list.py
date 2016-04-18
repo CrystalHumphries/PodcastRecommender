@@ -24,6 +24,7 @@ class get_twitter_followers(object):
         self.PodcastWithTw = None
         self.totalTwitters = None
         self.sparseMatrix = None
+        self.list_of_followers = None
           
     def intiate_mongo_client(self):
         client = MongoClient()
@@ -55,6 +56,8 @@ class get_twitter_followers(object):
         self.PodcastWithTw = n
 
     def get_overlapping_users(self, Num=10):
+        if self.list_of_followers is None:
+            self.list_followers()
         strings,titles = self.create_sparse_matrix(self.list_of_followers)
         self.titles = titles
         final = CV.fit_transform(strings)
