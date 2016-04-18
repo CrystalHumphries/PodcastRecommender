@@ -86,8 +86,8 @@ class Grab_MP3S(object):
                 self.connect_bucket('podcastrecommenderbucket')
                 title = self.df.Title.values[i]
                 folder = self._folder_name(title)
- 
-               n = 0
+
+                n = 0
                 for rss in list_rss:
                     if rss.split('.')[-1] != 'mp3':
                         continue
