@@ -66,5 +66,6 @@ if __name__ == "__main__":
                 else:
                     continue
             cmd_rm = 'rm ' + ' '.join(list_rss)
+            os.system(cmd_rm)
         except:
             broken_links.append(df.Title[i])
