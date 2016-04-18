@@ -55,13 +55,13 @@ class get_twitter_followers(object):
         self.PodcastWithTw = n
 
     def get_overlapping_users(self, Num=10):
-        strings,titles = create_sparse_matrix(self.list_of_followers)
+        strings,titles = self.create_sparse_matrix(self.list_of_followers)
         self.titles = titles
         final = CV.fit_transform(strings)
         rowsum_m = csr_matrix.sum(final, axis=0)
         self.totalTwitters = final.shape[1]
         rowsum_a = np.array(rowsum_m).reshape(rowsum_m.shape[1],)
-        mask = rowsum_a >= 10
+        mask = rowsum_a >= Num
         u = np.where(mask)[0]
         sparse_mat = final.tocsc()[:, u]
         self.sparseMatrix = sparse_mat
