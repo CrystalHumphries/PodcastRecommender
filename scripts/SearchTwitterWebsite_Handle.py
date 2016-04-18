@@ -1,3 +1,16 @@
+"""
+Created on Wed Apr 13 16:27:58 2016
+
+@author: Crystal.Humphries
+"""
+
+import re
+import requests
+from bs4 import BeautifulSoup
+import numpy as np
+import pandas as pd
+from pymongo import MongoClient
+
 
 twitter_handle = []
 podcast_name   = []
