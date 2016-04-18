@@ -17,6 +17,7 @@ import re
 import os
 import json
 from twitter_followers_list import get_twitter_followers
+import numpy as np
 
 '''Obtain list of rss websites'''
 
@@ -59,8 +60,17 @@ class Grab_MP3S(object):
         titles = df_followers.index
         has_followers = df.Title.isin(titles)
         self.df = df.loc[has_followers, :]
+    
+    def get_start_stop(self, quintile):
+        nrows = self.df.shape[0]
+        one_quintile = int(np.round((nrows)/5.0))
+        end = quintile*one_quintile
+        start = end - one_quintile
+        self.df = self.df.iloc[start:end, :]
 
-    def send_to_S3(self):
+    def send_to_S3(self, quintile=None):
+        if quintile is not None:
+            self.get_start_stop(quintile)
         self._trim_names()
         for i, rl in enumerate(self.df.NormalizedUrl):
             url = 'https://' + rl
