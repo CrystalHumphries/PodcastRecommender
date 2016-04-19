@@ -76,25 +76,25 @@ class Grab_MP3S(object):
         if quintile is not None:
             self.get_start_stop(quintile)
         self._trim_names()
-        for i, rl in enumerate(self.df.NormalizedUrl):
+        for i, rl in enumerate(self.df.NormalizedUrl.values):
             title = self.df.Title.values[i]
             url = 'https://' + rl
             try:
                 response = requests.get(url)
                 soup = BeautifulSoup(response.content)
-                list_rss = soup.findAll('media:content')
+                list_rss = soup.findAll('enclosure')
                 self.connect_bucket('podcastrecommenderbucket')
-                title = self.df.Title.values[i]
                 folder = self._folder_name(title)
 
                 n = 0
                 files=[]
+                print title
                 for rss in list_rss:
                     mp3 = rss.get('url')
-                    cmd = 'wget ' + mp3
-                    os.system(cmd)
-                    filename = os.path.basename(mp3)
-                    if filename.split('.')[-1] == 'mp3':
+                    if mp3.split('.')[-1] == 'mp3':
+                        cmd = 'wget ' + mp3
+                        os.system(cmd)
+                        filename = os.path.basename(mp3)
                         if os.path.exists(filename):
                             n += 1
                             self._write_to_s3(filename, folder, self.bucket)
@@ -103,7 +103,7 @@ class Grab_MP3S(object):
                             continue
                         if n == 5:
                             break
-                cmd_rm = 'rm -rf' + ' '.join(files)
+                cmd_rm = 'rm -rf ' + ' '.join(files)
                 os.system(cmd_rm)
             except:
                 self.broken_links.append(title)
