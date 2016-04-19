@@ -97,6 +97,36 @@ h6 {
     background-color: #fafafa;
 }
 
+.content-section-a : before, .content-section-a: after {
+    overflow: hidden;
+    content: "";
+    display: table;
+}
+
+.content-section-a: after {
+    clear: both;
+}
+
+.inner_block {
+    display: inline-block;
+    float: left;
+    width: 50%;
+}
+
+.inner_block {
+    display: inline-block;
+    float: left;
+    width: 50%;
+}
+
+.inner_block img {
+    width: 50%;
+    height: auto;
+    float: left;
+    vertical-align: middle;
+}
+
+
 .content-section-b {
     padding: 50px 0;
     border-top: 1px solid #e7e7e7;
