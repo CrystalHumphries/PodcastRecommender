@@ -35,7 +35,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/Podcastlogo.jpg) no-repeat center center;
+    background: url(../img/microphone_stock.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -116,7 +116,7 @@ h6 {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url(../img/noise_signal.jpg) no-repeat center center;
+    background-color: #181310;
     background-size: cover;
 }
 
