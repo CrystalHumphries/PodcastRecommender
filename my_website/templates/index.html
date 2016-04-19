@@ -76,6 +76,19 @@
                         <h1>Podcast Recommender</h1>
                         <h3>Discover New Podcasts</h3>
                         <hr class="intro-divider">
+                            <font color="black">
+                               <form action="action_page.php">
+                                  <input list="Podcasts" name="Podcast">
+                                      <datalist id="Podcasts">
+                                        <option value="Internet Explorer">
+                                        <option value="Firefox">
+                                        <option value="Chrome">
+                                        <option value="Opera">
+                                        <option value="Safari">
+                                      </datalist>
+                                      <input type="submit">
+                                    </form>
+                           </font>
 
                     </div>
                 </div>
@@ -100,6 +113,9 @@
                     <h2 class="section-heading">Getting Started:</h2>
                     <p class="lead">Click on a podcast to the left to get recommendations!!!</p>
                 </div>
+                    {% if True %}
+                            yay
+                    {% endif %}
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="static/img/TAML.png" alt="" width="100">
                 </div>
