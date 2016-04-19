@@ -34,7 +34,7 @@ h6 {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
-    color: #f8f8f8;
+    color: #fafafa;
     background: url(../img/microphone_stock.jpg) no-repeat center center;
     background-size: cover;
 }
@@ -53,7 +53,7 @@ h6 {
 
 .intro-divider {
     width: 400px;
-    border-top: 1px solid #f8f8f8;
+    border-top: 1px solid #fafafa;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
@@ -94,7 +94,7 @@ h6 {
 
 .content-section-a {
     padding: 50px 0;
-    background-color: #f8f8f8;
+    background-color: #fafafa;
 }
 
 .content-section-b {
@@ -115,7 +115,7 @@ h6 {
 
 .banner {
     padding: 100px 0;
-    color: #f8f8f8;
+    color: #fafafa;
     background-color: #181310;
     background-size: cover;
 }
@@ -162,7 +162,7 @@ h6 {
 
 footer {
     padding: 50px 0;
-    background-color: #f8f8f8;
+    background-color: #fafafa;
 }
 
 p.copyright {
