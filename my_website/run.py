@@ -11,19 +11,41 @@ import pandas as pd
 app = Flask(__name__)
 
 df = pd.read_csv("../data/Podcast_additional_info.csv", low_memory=False)
-Titles = df.Title.values[0:200]
+df = df.iloc[0:200, :]
+
+
+def stars(x):
+    ls = ['stars'] * x
+    if x < 5:
+        no_stars = ['noStars']* (5-x)
+        ls.extend(no_stars)
+    return ls
+    
+def get_meta(temp2):
+    ls_info = []
+    keep = ['AverageRating','Link','iTunesSubtitle', 'Title']
+    for i in temp2.index:
+        ls_info.append(temp2[keep].iloc[i].to_dict())
+    return ls_info
+    
 
 # home page
 @app.route('/')
 def index():
-    #text = [str(request.form['user_input'])]
-    #page = 'The predicted section name is: '
-    return render_template('index.html', title='Hello!', seq=Titles)
+    return render_template('index.html', title='Hello!', seq=df.Title.values)
+
 
 @app.route('/recommender', methods=['GET','POST'])
 def recommender():
     select = request.form.get('Podcast')
-    return(str(select))
+    pod = str(select)
+    temp = df[df.Title==pod]
+    pred = df.Title[0:10].values
+    temp2 = df[df.Title.isin(pred)]
+    prediction_info = get_meta(temp2)
+    return render_template('Recommendations.html', title='Hello!', 
+                           podcast=pod, summary=temp.iTunesSummary.values[0],
+                            predictions = prediction_info)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
