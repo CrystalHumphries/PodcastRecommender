@@ -77,18 +77,16 @@
                         <h3>Discover New Podcasts</h3>
                         <hr class="intro-divider">
                             <font color="black">
-                               <form action="action_page.php">
-                                  <input list="Podcasts" name="Podcast">
+                               <form action="/recommender", method="POST">                             
                                       <datalist id="Podcasts">
                                         {% for item in seq %}
-                                        <option value={{ item }}>
-                                        {% endfor %}
-                                        
+                                        <option value="{{ item }}">{{item}}</option>
+                                        {% endfor %} 
                                       </datalist>
-                                      <input type="submit">
+                                        <input list="Podcasts" name="Podcast"/>
+                                      <button type="submit" class="btn btn-default">Go</button>
                                     </form>
                            </font>
-
                     </div>
                 </div>
             </div>
