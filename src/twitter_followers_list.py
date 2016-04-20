@@ -98,8 +98,8 @@ class get_twitter_followers(object):
         df = self.trim_users(max_num)
         user_ids = np.array(df.columns.tolist())
         user_ids = np.array(["user_" + str(x) for x in user_ids])
-        podcasts = np.array(sparse_mat.index.tolist())
-        X = np.transpose(np.nonzero(sparse_mat.as_matrix()))
+        podcasts = np.array(df.index.tolist())
+        X = np.transpose(np.nonzero(df.as_matrix()))
         df_condensed = pd.DataFrame({"user_id": user_ids[X[:, 1]],
                                      'Title': podcasts[X[:, 0]]})
         return df_condensed
