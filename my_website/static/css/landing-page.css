@@ -113,18 +113,6 @@ h6 {
     width: 50%;
 }
 
-.inner_block {
-    display: inline-block;
-    float: left;
-    width: 50%;
-}
-
-.inner_block img {
-    width: 50%;
-    height: auto;
-    float: left;
-    vertical-align: middle;
-}
 
 
 .content-section-b {

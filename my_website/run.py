@@ -45,6 +45,8 @@ def recommender():
     prediction_info = get_meta(temp2)
     return render_template('Recommendations.html', title='Hello!', 
                            podcast=pod, summary=temp.iTunesSummary.values[0],
+                           ratings = temp.RatingCount.values[0],
+                            AvgStars=temp.AverageRating.values[0],
                             predictions = prediction_info)
 
 if __name__ == '__main__':
