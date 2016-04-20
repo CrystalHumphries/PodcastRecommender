@@ -17,7 +17,15 @@ CV = CountVectorizer()
 
 
 class get_twitter_followers(object):
-
+    '''
+        >>>tweets =  get_twitter_followers()
+        >>>tweets.Podcasts
+        tweets.Podcasts
+        >>>tweets.get_overlapping_users()
+        >>>tweets.PodcastWithTw
+        33580
+    '''
+    
     def __init__(self):
         self.Podcast_twitter = self.intiate_mongo_client()
         self.Podcasts = self.Podcast_twitter.count()
@@ -85,3 +93,13 @@ class get_twitter_followers(object):
         a = df.sum(axis=1)
         mask2 = a > 0
         return df.loc[mask2, :]
+        
+    def Item_sim_matrix(self, max_num=10000):
+        df = self.trim_users(max_num)
+        user_ids = np.array(df.columns.tolist())
+        user_ids = np.array(["user_" + str(x) for x in user_ids])
+        podcasts = np.array(sparse_mat.index.tolist())
+        X = np.transpose(np.nonzero(sparse_mat.as_matrix()))
+        df_condensed = pd.DataFrame({"user_id": user_ids[X[:, 1]],
+                                     'Title': podcasts[X[:, 0]]})
+        return df_condensed
