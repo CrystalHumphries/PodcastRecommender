@@ -13,7 +13,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-df = pd.read_pickle("../data/FinalPodcastMeta.pkl")
+df = pd.read_pickle("../data/CheckFirst_NewMeta.pkl")
 df.reset_index(inplace=True)
 df.Title = df.Title.apply(lambda x: unicode(x.decode('utf-8')))
 df.Title= df['Title'].str.lower()
