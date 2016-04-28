@@ -39,7 +39,7 @@ def get_meta(temp2):
 # home page
 @app.route('/')
 def index():
-    return render_template('index.html', title='New Podcasts', seq=df.Title.values)
+    return render_template('index.html', title='New Podcasts', seq=df.Title.str.title().values)
 
 @app.route('/recommender', methods=['GET','POST'])
 def recommender():
