@@ -44,19 +44,22 @@ def index():
 @app.route('/recommender', methods=['GET','POST'])
 def recommender():
     select = request.form.get('Podcast')
-    pod = unicode(select.decode('utf-8'))
-    temp = df[df.Title==pod.lower()]
-    pred = d.get_similar_items(gl.SArray([pod.title()]))
-    pred = pd.Series(pred['similar'])
-    pred = pred.str.lower()
-    temp2 = df[df.Title.isin(pred)]
-    prediction_info = get_meta(temp2)
-
-    return render_template('Recommendations.html', title='Hello!', 
-                           podcast=pod, summary=temp.iTunesSummary.values[0],
-                           ratings = temp.RatingCount.values[0],
-                            AvgStars=temp.AverageRating.values[0],
-                            predictions = prediction_info)
+    try:    
+        pod = unicode(select.decode('utf-8'))
+        temp = df[df.Title==pod.lower()]
+        pred = d.get_similar_items(gl.SArray([pod.title()]))
+        pred = pd.Series(pred['similar'])
+        pred = pred.str.lower()
+        temp2 = df[df.Title.isin(pred)]
+        prediction_info = get_meta(temp2)
+    
+        return render_template('Recommendations.html', title='Hello!', 
+                               podcast=pod, summary=temp.iTunesSummary.values[0],
+                               ratings = temp.RatingCount.values[0],
+                                AvgStars=temp.AverageRating.values[0],
+                                predictions = prediction_info)
+    except:
+        return render_template('error_page.html', title='New Podcasts')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)

@@ -52,7 +52,10 @@
                         <a href="#about">About</a>
                     </li>
                     <li>
-                        <a href="https://github.com/CrystalHumphries/PodcastRecommender">Project Description</a>
+                        <a href="#services">Project Description</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Podcast Categories</a>
                     </li>
                 </ul>
             </div>
@@ -114,9 +117,12 @@
                     </div>
                 
                     <div class="inner_block">
-                        <img src="static/img/Freakonomics.jpg" alt="" width="100", height="200">
+                        <img src="static/img/Freakonomics.jpg" alt="" width="100">
                     </div>  
 
+                     <div class="inner_block">
+                        <img src="static/img/Serial.jpg" alt="" width="100">
+                    </div>  
                 </div>
 
             </div>
@@ -170,11 +176,14 @@
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
                             <a href="#about">About</a>
-        
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="https://github.com/CrystalHumphries/PodcastRecommender">Project Description</a>
+                            <a href="#services">Project Description</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Podcast Categories</a>
                         </li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; Crystal Humphries 2016. All Rights Reserved</p>

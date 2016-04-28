@@ -43,20 +43,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">Podcast Recommender</a>
+                <a class="navbar-brand topnav" href="/">Podcast Recommender</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/CrystalHumphries/PodcastRecommender">Project Description</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
@@ -70,19 +58,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Podcast Recommender</h1>
-                        <h3>Discover New Podcasts</h3>
+                        <h2 style="color:green;">Podcast Recommender: Oops</h2>
+                        <h3>Whoops! We cannot seem to find that podcast. Please check spelling!</h3>
                         <hr class="intro-divider">
                             <font color="black">
-                               <form action="/recommender", method="POST">                             
-                                      <datalist id="Podcasts">
-                                        {% for item in seq %}
-                                        <option value="{{ item }}">{{item}}</option>
-                                        {% endfor %} 
-                                      </datalist>
-                                        <input list="Podcasts" name="Podcast"/>
-                                      <button type="submit" class="btn btn-default">Go</button>
-                                    </form>
+                              
                            </font>
                     </div>
                 </div>
@@ -98,32 +78,6 @@
 
 	<a  name="services"></a>
     <div class="content-section-a">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Getting Started:</h2>
-                    <p class="lead">Click on a podcast to the left to get recommendations!!!</p>
-                </div>
-
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <div class="inner_block">
-                        <img src="static/img/TAML.png" alt="" width="100">
-                    </div>
-                
-                    <div class="inner_block">
-                        <img src="static/img/Freakonomics.jpg" alt="" width="100", height="200">
-                    </div>  
-
-                </div>
-
-            </div>
-
-        </div>
-        <!-- /.container -->
-
     </div>
     <!-- /.content-section-a -->
 
@@ -163,20 +117,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#about">About</a>
-        
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="https://github.com/CrystalHumphries/PodcastRecommender">Project Description</a>
-                        </li>
-                    </ul>
                     <p class="copyright text-muted small">Copyright &copy; Crystal Humphries 2016. All Rights Reserved</p>
                 </div>
             </div>
