@@ -44,7 +44,7 @@ def index():
 @app.route('/recommender', methods=['GET','POST'])
 def recommender():
     select = request.form.get('Podcast')
-    pod = unicode(select)
+    pod = unicode(select.decode('utf-8'))
     temp = df[df.Title==pod.lower()]
     pred = d.get_similar_items(gl.SArray([pod]))
     pred = pd.Series(pred['similar'])
