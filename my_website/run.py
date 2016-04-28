@@ -46,7 +46,7 @@ def recommender():
     select = request.form.get('Podcast')
     pod = unicode(select.decode('utf-8'))
     temp = df[df.Title==pod.lower()]
-    pred = d.get_similar_items(gl.SArray([pod]))
+    pred = d.get_similar_items(gl.SArray([pod.title()]))
     pred = pd.Series(pred['similar'])
     pred = pred.str.lower()
     temp2 = df[df.Title.isin(pred)]
