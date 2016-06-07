@@ -24,7 +24,7 @@ home = os.environ["HOME"]
 loc = os.path.join(home, ".api/")
 
 
-class get_twitter_APIs(object):
+class Twitter_APIs(object):
     """Returns a list of activated Twitter APIs given a json file of each key.
 
     Parameters
@@ -48,21 +48,20 @@ class get_twitter_APIs(object):
     [<tweepy.api.API at 0x104f2cf50>]
     """
 
-    def __init__(self, api_list=None):
-        if api_list is None:
-            self.twitter_api_list = APIs
-        else:
-            self.twitter_api_list = api_list
+    def __init__(self, api_list=APIs):
+        self.twitter_api_list = api_list
         self.api_list = []
 
     def create_api(self, file_name):
         '''reads the json file and returns the tokens and keys
             for API activation'''
-        twitter_api = json.load(open(file_name))
+        json_file = open(file_name)
+        twitter_api = json.load(json_file)
         access_token = twitter_api['Access Token']
         access_token_secret = twitter_api['Access Token Secret']
         consumer_key = twitter_api['API Key']
         consumer_secret = twitter_api['API Secret']
+        json_file.close()
         return access_token, access_token_secret, consumer_key, consumer_secret
 
     def activate_APIs(self):
